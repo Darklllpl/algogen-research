@@ -6,8 +6,8 @@ from tqdm import tqdm
 import requests
 import time
 
-API_BASE_URL = 'https://az.gptplus5.com/v1'
-API_TOKEN = "sk-dMdaYSQFPlEMDhGK02AeD8C2Ec0d43EdBaD8Ce0435BcC623"
+API_BASE_URL = ''  
+API_TOKEN = ''    
 DEFAULT_MODEL = "o4-mini"
 
 INPUT_SVL_DIR = "svl_dataset/small_test"
