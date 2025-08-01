@@ -1,0 +1,942 @@
+{
+  "svl_version": "4.0",
+  "algorithm": {
+    "name": "Bubble Sort",
+    "family": "Sorting Algorithms"
+  },
+  "initial_frame": {
+    "variables_schema": [
+      {
+        "name": "i",
+        "type": "pointer",
+        "description": "\u5916\u5c42\u5faa\u73af, \u63a7\u5236\u5df2\u6392\u5e8f\u533a\u57df\u7684\u8fb9\u754c"
+      },
+      {
+        "name": "j",
+        "type": "pointer",
+        "description": "\u5185\u5c42\u5faa\u73af, \u7528\u4e8e\u6bd4\u8f83\u548c\u4ea4\u6362\u76f8\u90bb\u5143\u7d20"
+      }
+    ],
+    "data_state": [
+      {
+        "index": 0,
+        "value": 52,
+        "state": "idle"
+      },
+      {
+        "index": 1,
+        "value": 25,
+        "state": "idle"
+      },
+      {
+        "index": 2,
+        "value": 24,
+        "state": "idle"
+      },
+      {
+        "index": 3,
+        "value": 29,
+        "state": "idle"
+      },
+      {
+        "index": 4,
+        "value": 85,
+        "state": "idle"
+      }
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "fill": "#FFFFFF",
+          "stroke": "#333333"
+        },
+        "comparing": {
+          "fill": "#FFF9C4",
+          "stroke": "#FBC02D"
+        },
+        "tobe_swapped": {
+          "fill": "#FFCCBC",
+          "stroke": "#E64A19"
+        },
+        "sorted": {
+          "fill": "#C8E6C9",
+          "stroke": "#388E3C"
+        }
+      },
+      "animationStyles": {
+        "swap_animation": {
+          "type": "path",
+          "duration": 500
+        }
+      },
+      "tempStyles": {
+        "swap_arrow": {
+          "color": "#D32F2F",
+          "shape": "curved_arrow"
+        }
+      }
+    },
+    "pseudocode": [
+      "function BubbleSort(array):",
+      "  n = length(array)",
+      "  for i from 0 to n-1:",
+      "    for j from 0 to n-i-2:",
+      "      if array[j] > array[j+1]:",
+      "        swap(array[j], array[j+1])",
+      "  return array"
+    ]
+  },
+  "deltas": [
+    {
+      "meta": {},
+      "code_highlight": 3,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 0
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 0
+      },
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "drawTemp",
+            "params": {
+              "type": "swap_arrow",
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "swap_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 0
+      },
+      "code_highlight": 6,
+      "operations": [
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "swap_arrow"
+          }
+        },
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 0,
+                "toIndex": 1
+              },
+              {
+                "fromIndex": 1,
+                "toIndex": 0
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0,
+              1
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "drawTemp",
+            "params": {
+              "type": "swap_arrow",
+              "indices": [
+                1,
+                2
+              ],
+              "styleKey": "swap_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": [
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "swap_arrow"
+          }
+        },
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 1,
+                "toIndex": 2
+              },
+              {
+                "fromIndex": 2,
+                "toIndex": 1
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "drawTemp",
+            "params": {
+              "type": "swap_arrow",
+              "indices": [
+                2,
+                3
+              ],
+              "styleKey": "swap_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": [
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "swap_arrow"
+          }
+        },
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 2,
+                "toIndex": 3
+              },
+              {
+                "fromIndex": 3,
+                "toIndex": 2
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2,
+              3
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3,
+              4
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 3,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": "-"
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 0
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 0
+      },
+      "code_highlight": 6,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "drawTemp",
+            "params": {
+              "type": "swap_arrow",
+              "indices": [
+                0,
+                1
+              ],
+              "styleKey": "swap_arrow"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 0
+      },
+      "code_highlight": 6,
+      "operations": [
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "swap_arrow"
+          }
+        },
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 0,
+                "toIndex": 1
+              },
+              {
+                "fromIndex": 1,
+                "toIndex": 0
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0,
+              1
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2,
+              3
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": "-"
+      },
+      "code_highlight": 3,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 0
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 0
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0,
+              1
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 3,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 0
+      },
+      "code_highlight": 5,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "comparing"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "comparing"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 0
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0,
+              1
+            ],
+            "styleKey": "idle"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 3,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": "-"
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": "-"
+      },
+      "code_highlight": 3,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    }
+  ]
+}

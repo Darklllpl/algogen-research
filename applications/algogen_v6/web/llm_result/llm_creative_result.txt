@@ -1,0 +1,19 @@
+```json
+{
+  "style_overrides": {
+    "elementStyles": {
+      "current_node": {
+        "fill": "#9C27B0"
+      }
+    }
+  },
+  "control_object": {
+    "pauses": [
+      {
+        "condition": {},
+        "duration": 2000
+      }
+    ]
+  }
+}
+```

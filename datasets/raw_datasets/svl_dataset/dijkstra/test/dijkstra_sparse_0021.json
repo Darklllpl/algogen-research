@@ -1,0 +1,2276 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Dijkstra's Algorithm",
+    "family": "Graph Shortest Path"
+  },
+  "initial_frame": {
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "fill": "#E8F5E9",
+          "stroke": "#424242",
+          "strokeWidth": 1.5
+        },
+        "compare": {
+          "fill": "#F8BBD0",
+          "stroke": "#FFB300",
+          "strokeWidth": 2
+        },
+        "sorted": {
+          "fill": "#C8E6C9",
+          "stroke": "#2196F3",
+          "strokeWidth": 1.5
+        },
+        "swapping": {
+          "fill": "#F48FB1",
+          "stroke": "#D32F2F",
+          "strokeWidth": 2.5
+        },
+        "pivot": {
+          "fill": "#FFF9C4",
+          "stroke": "#00897B",
+          "strokeWidth": 2.5
+        },
+        "key_element": {
+          "fill": "#A5D6A7",
+          "stroke": "#009688",
+          "strokeWidth": 2.5
+        },
+        "placeholder": {
+          "fill": "#F5F5F5",
+          "stroke": "#BDBDBD"
+        },
+        "shifting": {
+          "fill": "#B2DFDB",
+          "stroke": "#1976D2"
+        },
+        "sub_array_active": {
+          "fill": "#FCE4EC",
+          "stroke": "#AFB42B",
+          "strokeWidth": 1.5
+        },
+        "partition_area": {
+          "fill": "#E8F5E9",
+          "stroke": "#66BB6A",
+          "strokeWidth": 1.5
+        },
+        "heap_area": {
+          "fill": "#F5F5F5",
+          "stroke": "#616161"
+        },
+        "idle_node": {
+          "fill": "#FAFAFA",
+          "stroke": "#616161",
+          "strokeWidth": 2
+        },
+        "current_node": {
+          "fill": "#FFF9C4",
+          "stroke": "#FBC02D",
+          "strokeWidth": 3
+        },
+        "visited_node": {
+          "fill": "#E8EAF6",
+          "stroke": "#3F51B5",
+          "strokeWidth": 2
+        },
+        "in_path_node": {
+          "fill": "#C8E6C9",
+          "stroke": "#4CAF50",
+          "strokeWidth": 2.5
+        },
+        "normal_edge": {
+          "color": "#9E9E9E",
+          "strokeWidth": 1.5
+        },
+        "traversed_edge": {
+          "color": "#7E57C2",
+          "strokeWidth": 3
+        },
+        "in_path_edge": {
+          "color": "#66BB6A",
+          "strokeWidth": 3.5
+        },
+        "current_cell": {
+          "fill": "rgba(255, 249, 196, 0.7)"
+        },
+        "dependency_cell": {
+          "fill": "rgba(225, 245, 254, 0.7)"
+        },
+        "updated_cell": {
+          "fill": "rgba(200, 230, 201, 0.7)"
+        }
+      },
+      "variableStyles": {
+        "default_pointer": {
+          "color": "#D32F2F",
+          "shape": "arrow"
+        },
+        "default_value": {
+          "color": "#212121"
+        }
+      },
+      "tempStyles": {
+        "swap_arrow": {
+          "color": "#D32F2F",
+          "strokeWidth": 2,
+          "tip": "Stealth"
+        },
+        "dependency_arrow": {
+          "color": "#FF7043",
+          "strokeWidth": 1.5,
+          "tip": "Latex"
+        },
+        "partition_box": {
+          "fill": "rgba(179, 229, 252, 0.2)",
+          "stroke": "#0288D1",
+          "strokeDash": "4 2"
+        },
+        "key_holder_box": {
+          "fill": "#F3E5F5",
+          "stroke": "#8E24AA"
+        },
+        "parent_child_link": {
+          "color": "#009688",
+          "strokeWidth": 1.5,
+          "tip": "none"
+        },
+        "heap_boundary": {
+          "fill": "rgba(200, 230, 201, 0.2)",
+          "stroke": "#4CAF50",
+          "strokeDash": "4 2"
+        }
+      },
+      "commentStyles": {
+        "default_comment": {
+          "fill": "#EEEEEE",
+          "fontColor": "#212121",
+          "borderColor": "#BDBDBD"
+        }
+      },
+      "animationStyles": {
+        "default_move": {
+          "type": "ease-in-out",
+          "duration": 500
+        }
+      }
+    },
+    "pseudocode": [
+      "function Dijkstra(graph, start):",
+      "  dist = init_distances_to_infinity()",
+      "  dist[start] = 0",
+      "  pq = new PriorityQueue()",
+      "  pq.add((0, start))",
+      "  while pq is not empty:",
+      "    dist_u, u = pq.pop()",
+      "    if dist_u > dist[u]: continue",
+      "    for each neighbor v of u:",
+      "      weight_uv = weight(u, v)",
+      "      if dist[u] + weight_uv < dist[v]:",
+      "        dist[v] = dist[u] + weight_uv",
+      "        predecessor[v] = u",
+      "        pq.add((dist[v], v))",
+      "  return dist, predecessor"
+    ],
+    "variables_schema": [
+      {
+        "name": "currentNode",
+        "type": "value"
+      },
+      {
+        "name": "priorityQueue",
+        "type": "list"
+      }
+    ],
+    "data_schema": {
+      "node_properties_schema": [
+        {
+          "name": "dist",
+          "type": "value"
+        },
+        {
+          "name": "pred",
+          "type": "value"
+        }
+      ]
+    },
+    "data_state": {
+      "type": "graph",
+      "structure": {
+        "nodes": [
+          {
+            "id": "A",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          },
+          {
+            "id": "B",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          },
+          {
+            "id": "C",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          },
+          {
+            "id": "D",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          },
+          {
+            "id": "E",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          },
+          {
+            "id": "F",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          },
+          {
+            "id": "G",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          },
+          {
+            "id": "H",
+            "styleKey": "idle_node",
+            "properties": {
+              "dist": "∞",
+              "pred": "-"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "A",
+            "to": "D",
+            "directed": false,
+            "label": "1",
+            "styleKey": "normal_edge",
+            "properties": {
+              "weight": 1
+            }
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "directed": false,
+            "label": "19",
+            "styleKey": "normal_edge",
+            "properties": {
+              "weight": 19
+            }
+          },
+          {
+            "from": "B",
+            "to": "F",
+            "directed": false,
+            "label": "20",
+            "styleKey": "normal_edge",
+            "properties": {
+              "weight": 20
+            }
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "directed": false,
+            "label": "10",
+            "styleKey": "normal_edge",
+            "properties": {
+              "weight": 10
+            }
+          },
+          {
+            "from": "B",
+            "to": "E",
+            "directed": false,
+            "label": "9",
+            "styleKey": "normal_edge",
+            "properties": {
+              "weight": 9
+            }
+          },
+          {
+            "from": "C",
+            "to": "G",
+            "directed": false,
+            "label": "17",
+            "styleKey": "normal_edge",
+            "properties": {
+              "weight": 17
+            }
+          },
+          {
+            "from": "C",
+            "to": "H",
+            "directed": false,
+            "label": "19",
+            "styleKey": "normal_edge",
+            "properties": {
+              "weight": 19
+            }
+          }
+        ]
+      }
+    },
+    "code_highlight": 1
+  },
+  "deltas": [
+    {
+      "meta": {},
+      "code_highlight": 3,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "F",
+                "properties": {
+                  "dist": 0
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            0,
+            "F"
+          ]
+        ]
+      },
+      "code_highlight": 4,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "F"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            0,
+            "F"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "F"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "F"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "F"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "F",
+                "to": "B"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            20,
+            "B"
+          ]
+        ],
+        "currentNode": "F"
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "B",
+                "properties": {
+                  "dist": 20,
+                  "pred": "F"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            20,
+            "B"
+          ]
+        ],
+        "currentNode": "F"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "F",
+                "to": "B"
+              }
+            ],
+            "styleKey": "relaxed_edge"
+          }
+        },
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            20,
+            "B"
+          ]
+        ],
+        "currentNode": "F"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            20,
+            "B"
+          ]
+        ],
+        "currentNode": "F"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "F"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            20,
+            "B"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "B"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "F"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "B",
+                "to": "F"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "F"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "B",
+                "to": "C"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "C",
+                "properties": {
+                  "dist": 30,
+                  "pred": "B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "B",
+                "to": "C"
+              }
+            ],
+            "styleKey": "relaxed_edge"
+          }
+        },
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "A"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "B",
+                "to": "A"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "A",
+                "properties": {
+                  "dist": 39,
+                  "pred": "B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "B",
+                "to": "A"
+              }
+            ],
+            "styleKey": "relaxed_edge"
+          }
+        },
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "A"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "A"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "E"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "B",
+                "to": "E"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            29,
+            "E"
+          ],
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "E",
+                "properties": {
+                  "dist": 29,
+                  "pred": "B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            29,
+            "E"
+          ],
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "B",
+                "to": "E"
+              }
+            ],
+            "styleKey": "relaxed_edge"
+          }
+        },
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "E"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            29,
+            "E"
+          ],
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "E"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            29,
+            "E"
+          ],
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "B"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            29,
+            "E"
+          ],
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "E"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "E"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "E"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "E",
+                "to": "B"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "E"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "E"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "E"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            30,
+            "C"
+          ],
+          [
+            39,
+            "A"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "G"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "C",
+                "to": "G"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "G",
+                "properties": {
+                  "dist": 47,
+                  "pred": "C"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "C",
+                "to": "G"
+              }
+            ],
+            "styleKey": "relaxed_edge"
+          }
+        },
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "G"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "G"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "C",
+                "to": "B"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "H"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "C",
+                "to": "H"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "H",
+                "properties": {
+                  "dist": 49,
+                  "pred": "C"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "C",
+                "to": "H"
+              }
+            ],
+            "styleKey": "relaxed_edge"
+          }
+        },
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "H"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "H"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "C"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            39,
+            "A"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "A"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "D"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "A",
+                "to": "D"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            40,
+            "D"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "updateNodeProperties",
+          "params": {
+            "updates": [
+              {
+                "id": "D",
+                "properties": {
+                  "dist": 40,
+                  "pred": "A"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            40,
+            "D"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "A",
+                "to": "D"
+              }
+            ],
+            "styleKey": "relaxed_edge"
+          }
+        },
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "D"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            40,
+            "D"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "D"
+            ],
+            "styleKey": "queued_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            40,
+            "D"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "A",
+                "to": "B"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            40,
+            "D"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "B"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            40,
+            "D"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "A"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "A"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            40,
+            "D"
+          ],
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "D"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "D"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "D"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "A"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "D",
+                "to": "A"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "D"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "A"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "D"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "D"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            47,
+            "G"
+          ],
+          [
+            49,
+            "H"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "G"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "G"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "G"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "G",
+                "to": "C"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "G"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            49,
+            "H"
+          ]
+        ],
+        "currentNode": "G"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "G"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [
+          [
+            49,
+            "H"
+          ]
+        ]
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "H"
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "H"
+            ],
+            "styleKey": "current_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "H"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "compare"
+          }
+        },
+        {
+          "op": "updateEdgeStyle",
+          "params": {
+            "edges": [
+              {
+                "from": "H",
+                "to": "C"
+              }
+            ],
+            "styleKey": "traversed_edge"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "H"
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "C"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "priorityQueue": [],
+        "currentNode": "H"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "updateNodeStyle",
+          "params": {
+            "ids": [
+              "H"
+            ],
+            "styleKey": "settled_node"
+          }
+        }
+      ]
+    }
+  ]
+}

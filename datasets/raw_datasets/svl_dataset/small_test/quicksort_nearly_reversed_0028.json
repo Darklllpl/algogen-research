@@ -1,0 +1,6980 @@
+{
+  "svl_version": "4.0",
+  "algorithm": {
+    "name": "Quick Sort (Lomuto Partition)",
+    "family": "Sorting Algorithms"
+  },
+  "initial_frame": {
+    "variables_schema": [
+      {
+        "name": "low",
+        "type": "pointer",
+        "description": "\u5f53\u524d\u5904\u7406\u5206\u533a\u7684\u8d77\u59cb\u7d22\u5f15"
+      },
+      {
+        "name": "high",
+        "type": "pointer",
+        "description": "\u5f53\u524d\u5904\u7406\u5206\u533a\u7684\u7ed3\u675f\u7d22\u5f15"
+      },
+      {
+        "name": "pivot",
+        "type": "value",
+        "description": "\u5f53\u524d\u5206\u533a\u7684\u4e3b\u5143\u503c"
+      },
+      {
+        "name": "i",
+        "type": "pointer",
+        "description": "\u5c0f\u4e8e\u4e3b\u5143\u533a\u57df\u7684\u8fb9\u754c"
+      },
+      {
+        "name": "j",
+        "type": "pointer",
+        "description": "\u5f53\u524d\u626b\u63cf\u7684\u5143\u7d20\u7d22\u5f15"
+      }
+    ],
+    "data_state": [
+      {
+        "index": 0,
+        "value": 79,
+        "state": "idle"
+      },
+      {
+        "index": 1,
+        "value": 76,
+        "state": "idle"
+      },
+      {
+        "index": 2,
+        "value": 66,
+        "state": "idle"
+      },
+      {
+        "index": 3,
+        "value": 69,
+        "state": "idle"
+      },
+      {
+        "index": 4,
+        "value": 66,
+        "state": "idle"
+      },
+      {
+        "index": 5,
+        "value": 23,
+        "state": "idle"
+      },
+      {
+        "index": 6,
+        "value": 74,
+        "state": "idle"
+      },
+      {
+        "index": 7,
+        "value": 65,
+        "state": "idle"
+      },
+      {
+        "index": 8,
+        "value": 60,
+        "state": "idle"
+      },
+      {
+        "index": 9,
+        "value": 57,
+        "state": "idle"
+      },
+      {
+        "index": 10,
+        "value": 54,
+        "state": "idle"
+      },
+      {
+        "index": 11,
+        "value": 36,
+        "state": "idle"
+      },
+      {
+        "index": 12,
+        "value": 30,
+        "state": "idle"
+      },
+      {
+        "index": 13,
+        "value": 66,
+        "state": "idle"
+      },
+      {
+        "index": 14,
+        "value": 8,
+        "state": "idle"
+      }
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "idle": {
+          "fill": "#FFFFFF",
+          "stroke": "#333333"
+        },
+        "sub_array_active": {
+          "fill": "#E3F2FD",
+          "stroke": "#42A5F5"
+        },
+        "pivot": {
+          "fill": "#FFCDD2",
+          "stroke": "#D32F2F"
+        },
+        "comparing": {
+          "fill": "#FFF9C4",
+          "stroke": "#FBC02D"
+        },
+        "partition_boundary": {
+          "fill": "#A5D6A7",
+          "stroke": "#388E3C"
+        },
+        "tobe_swapped": {
+          "fill": "#FFCCBC",
+          "stroke": "#E64A19"
+        },
+        "sorted": {
+          "fill": "#C8E6C9",
+          "stroke": "#388E3C"
+        }
+      },
+      "animationStyles": {
+        "swap_animation": {
+          "type": "path",
+          "duration": 400
+        }
+      },
+      "tempStyles": {
+        "partition_box": {
+          "fill": "rgba(66, 165, 245, 0.1)",
+          "stroke": "#1E88E5",
+          "shape": "box"
+        }
+      }
+    },
+    "pseudocode": [
+      "function quickSort(array, low, high):",
+      "  if low < high:",
+      "    pi = partition(array, low, high)",
+      "    quickSort(array, low, pi - 1)",
+      "    quickSort(array, pi + 1, high)",
+      "",
+      "function partition(array, low, high):",
+      "  pivot = array[high]",
+      "  i = low - 1",
+      "  for j from low to high - 1:",
+      "    if array[j] < pivot:",
+      "      i = i + 1",
+      "      swap(array[i], array[j])",
+      "  swap(array[i+1], array[high])",
+      "  return i + 1"
+    ]
+  },
+  "deltas": [
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                0,
+                14
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              14
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 0
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 0
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 0
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 1
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 1
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 1
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 2
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 2
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 2
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 3
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 6
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 7
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              7
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 7
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 7
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              7
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 8
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              8
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 8
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 8
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              8
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 9
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 9
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 9
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 10
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              10
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 10
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 10
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              10
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 11
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              11
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 11
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 11
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              11
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 12
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 12
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 12
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 13
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              13
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 13
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": 13
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              13
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                0
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                14
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 0,
+                "toIndex": 14
+              },
+              {
+                "fromIndex": 14,
+                "toIndex": 0
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 0,
+        "high": 14,
+        "pivot": 8,
+        "i": -1,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                1,
+                14
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              14
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 2,
+        "j": 2
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 2,
+        "j": 2
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 5,
+        "j": 6
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 5,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 6,
+        "j": 6
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 6,
+        "j": 6
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 6,
+        "j": 7
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              7
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 6,
+        "j": 7
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 7,
+        "j": 7
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 7,
+        "j": 7
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 7,
+        "j": 8
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              8
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 7,
+        "j": 8
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 8,
+        "j": 8
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 8,
+        "j": 8
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                8
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                8
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 8,
+        "j": 9
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 8,
+        "j": 9
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 9,
+        "j": 9
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 9,
+        "j": 9
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 9,
+        "j": 10
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              10
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 9,
+        "j": 10
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 10,
+        "j": 10
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 10,
+        "j": 10
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                10
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                10
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 10,
+        "j": 11
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              11
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 10,
+        "j": 11
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 11,
+        "j": 11
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 11,
+        "j": 11
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                11
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                11
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 11,
+        "j": 12
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 11,
+        "j": 12
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 12,
+        "j": 12
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 12,
+        "j": 12
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 12,
+        "j": 13
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              13
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 12,
+        "j": 13
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 13,
+        "j": 13
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 13,
+        "j": 13
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                13
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                13
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 13,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                14
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                14
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 13,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 14,
+                "toIndex": 14
+              },
+              {
+                "fromIndex": 14,
+                "toIndex": 14
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 14,
+        "pivot": 79,
+        "i": 13,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              14
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                1,
+                13
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              13
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 2
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 2
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 2
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 3
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 0,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 1,
+                "toIndex": 5
+              },
+              {
+                "fromIndex": 5,
+                "toIndex": 1
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 6
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 7
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              7
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 1,
+        "j": 7
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 2,
+        "j": 7
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 2,
+        "j": 7
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 2,
+        "j": 7
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 2,
+                "toIndex": 7
+              },
+              {
+                "fromIndex": 7,
+                "toIndex": 2
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 2,
+        "j": 7
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 2,
+        "j": 8
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              8
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 2,
+        "j": 8
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 3,
+        "j": 8
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 3,
+        "j": 8
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                8
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 3,
+        "j": 8
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 3,
+                "toIndex": 8
+              },
+              {
+                "fromIndex": 8,
+                "toIndex": 3
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 3,
+        "j": 8
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                8
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 3,
+        "j": 9
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 3,
+        "j": 9
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 4,
+        "j": 9
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 4,
+        "j": 9
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 4,
+        "j": 9
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 4,
+                "toIndex": 9
+              },
+              {
+                "fromIndex": 9,
+                "toIndex": 4
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 4,
+        "j": 9
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 4,
+        "j": 10
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              10
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 4,
+        "j": 10
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 5,
+        "j": 10
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 5,
+        "j": 10
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                10
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 5,
+        "j": 10
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 5,
+                "toIndex": 10
+              },
+              {
+                "fromIndex": 10,
+                "toIndex": 5
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 5,
+        "j": 10
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                10
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 5,
+        "j": 11
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              11
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 5,
+        "j": 11
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 6,
+        "j": 11
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 6,
+        "j": 11
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                11
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 6,
+        "j": 11
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 6,
+                "toIndex": 11
+              },
+              {
+                "fromIndex": 11,
+                "toIndex": 6
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 6,
+        "j": 11
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                11
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 6,
+        "j": 12
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 6,
+        "j": 12
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 7,
+        "j": 12
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 7,
+        "j": 12
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 7,
+        "j": 12
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 7,
+                "toIndex": 12
+              },
+              {
+                "fromIndex": 12,
+                "toIndex": 7
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 7,
+        "j": 12
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 7,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                8
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                13
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 7,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 8,
+                "toIndex": 13
+              },
+              {
+                "fromIndex": 13,
+                "toIndex": 8
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 13,
+        "pivot": 66,
+        "i": 7,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              8
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                1,
+                7
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              7
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 0,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 0,
+        "j": 1
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                1
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 3
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 6
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                2
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 2,
+                "toIndex": 7
+              },
+              {
+                "fromIndex": 7,
+                "toIndex": 2
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 1,
+        "high": 7,
+        "pivot": 30,
+        "i": 1,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              2
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                9,
+                13
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9,
+                10,
+                11,
+                12,
+                13
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 8,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              13
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 8,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 8,
+        "j": 9
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 8,
+        "j": 9
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 9
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 9
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 10
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              10
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 10
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 10
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              10
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 11
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              11
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 11
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 11
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              11
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 12
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 9,
+        "j": 12
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 10,
+        "j": 12
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9,
+              10
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 10,
+        "j": 12
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                10
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 10,
+        "j": 12
+      },
+      "code_highlight": 13,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 10,
+                "toIndex": 12
+              },
+              {
+                "fromIndex": 12,
+                "toIndex": 10
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 10,
+        "j": 12
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                10
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 10,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                11
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                13
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 10,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 11,
+                "toIndex": 13
+              },
+              {
+                "fromIndex": 13,
+                "toIndex": 11
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 13,
+        "pivot": 69,
+        "i": 10,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              11
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                3,
+                7
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              7
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3,
+              4
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3,
+              4,
+              5
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 5,
+        "j": 6
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 5,
+        "j": 6
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 6,
+        "j": 6
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 6,
+        "j": 6
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 6,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                7
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 6,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 7,
+                "toIndex": 7
+              },
+              {
+                "fromIndex": 7,
+                "toIndex": 7
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 7,
+        "pivot": 65,
+        "i": 6,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              7
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                9,
+                10
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9,
+                10
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              10
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": 9
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": 9
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": 9
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                9
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                10
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 9,
+                "toIndex": 10
+              },
+              {
+                "fromIndex": 10,
+                "toIndex": 9
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 9,
+        "high": 10,
+        "pivot": 66,
+        "i": 8,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9,
+              10
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              9
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                12,
+                13
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12,
+                13
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              13
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": 12
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": 12
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": 12
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                12
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                13
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 12,
+                "toIndex": 13
+              },
+              {
+                "fromIndex": 13,
+                "toIndex": 12
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 12,
+        "high": 13,
+        "pivot": 74,
+        "i": 11,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12,
+              13
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              12
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                3,
+                6
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                3
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 3,
+                "toIndex": 6
+              },
+              {
+                "fromIndex": 6,
+                "toIndex": 3
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 3,
+        "high": 6,
+        "pivot": 36,
+        "i": 2,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              3
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                4,
+                6
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5,
+                6
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 12,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4,
+              5
+            ],
+            "styleKey": "partition_boundary"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 13,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "partition_boundary"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 5,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                6
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 5,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 6,
+                "toIndex": 6
+              },
+              {
+                "fromIndex": 6,
+                "toIndex": 6
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 6,
+        "pivot": 60,
+        "i": 5,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4,
+              5,
+              6
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              6
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": "-",
+        "i": "-",
+        "j": "-"
+      },
+      "code_highlight": 2,
+      "operations": [
+        [
+          {
+            "op": "updateBoundary",
+            "params": {
+              "type": "partition_box",
+              "range": [
+                4,
+                5
+              ],
+              "label": "Partitioning",
+              "styleKey": "partition_box"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4,
+                5
+              ],
+              "styleKey": "sub_array_active"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 8,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              5
+            ],
+            "styleKey": "pivot"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 9,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "comparing"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": []
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 11,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "sub_array_active"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        [
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                4
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          },
+          {
+            "op": "updateStyle",
+            "params": {
+              "indices": [
+                5
+              ],
+              "styleKey": "tobe_swapped"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 14,
+      "operations": [
+        {
+          "op": "moveElements",
+          "params": {
+            "pairs": [
+              {
+                "fromIndex": 4,
+                "toIndex": 5
+              },
+              {
+                "fromIndex": 5,
+                "toIndex": 4
+              }
+            ],
+            "animationKey": "swap_animation"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "low": 4,
+        "high": 5,
+        "pivot": 54,
+        "i": 3,
+        "j": "-"
+      },
+      "code_highlight": 15,
+      "operations": [
+        {
+          "op": "removeBoundary",
+          "params": {
+            "type": "partition_box"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4,
+              5
+            ],
+            "styleKey": "idle"
+          }
+        },
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              4
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 5,
+      "operations": []
+    },
+    {
+      "meta": {},
+      "code_highlight": 1,
+      "operations": [
+        {
+          "op": "updateStyle",
+          "params": {
+            "indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "styleKey": "sorted"
+          }
+        }
+      ]
+    }
+  ]
+}

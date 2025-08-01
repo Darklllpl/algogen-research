@@ -1,0 +1,177 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/svl5_final_revised.schema.json",
+  "title": "SVL 5.0 Schema (Final Revised)",
+  "description": "A schema for validating Standard Vision Language (SVL) version 5.0 files, based on final review.",
+  "type": "object",
+  "properties": {
+    "svl_version": { "type": "string", "const": "5.0" },
+    "algorithm": { "$ref": "#/definitions/algorithm" },
+    "initial_frame": { "$ref": "#/definitions/initial_frame" },
+    "deltas": { "type": "array", "items": { "$ref": "#/definitions/frame_delta" } }
+  },
+  "required": ["svl_version", "algorithm", "initial_frame", "deltas"],
+  "definitions": {
+    "algorithm": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "family": { "type": "string" }
+      },
+      "required": ["name", "family"]
+    },
+    "initial_frame": {
+      "type": "object",
+      "properties": {
+        "data_schema": { "$ref": "#/definitions/data_schema" },
+        "data_state": { "$ref": "#/definitions/data_state" },
+        "auxiliary_views": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/auxiliary_view" }
+        },
+        "variables_schema": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/variable_schema_item" }
+        },
+        "pseudocode": { "type": "array", "items": { "type": "string" } },
+        "code_highlight": { "type": "integer" },
+        "styles": { "$ref": "#/definitions/styles_object" },
+        "playback_options": { "$ref": "#/definitions/playback_options" }
+      },
+      "required": [
+        "data_schema",
+        "data_state",
+        "variables_schema",
+        "pseudocode",
+        "code_highlight",
+        "styles"
+      ]
+    },
+    "data_schema": {
+      "type": "object",
+      "properties": {
+        "node_properties_schema": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/variable_schema_item" }
+        },
+        "edge_properties_schema": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/variable_schema_item" }
+        }
+      }
+    },
+    "data_state": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["array", "graph"] },
+        "data": { "type": "array" },
+        "structure": { "type": "object" }
+      },
+      "required": ["type"]
+    },
+    "auxiliary_view": {
+      "type": "object",
+      "properties": {
+        "view_id": { "type": "string" },
+        "type": { "type": "string", "enum": ["table", "list", "tree"] },
+        "title": { "type": "string" },
+        "data": {},
+        "options": { "type": "object" }
+      },
+      "required": ["view_id", "type", "title", "data"]
+    },
+    "variable_schema_item": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" },
+        "styleKey": { "type": "string" }
+      },
+      "required": ["name", "type"]
+    },
+    "frame_delta": {
+      "type": "object",
+      "properties": {
+        "meta": { "type": "object" },
+        "code_highlight": { "type": "integer" },
+        "operations": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/operation_object" },
+              {
+                "type": "array",
+                "items": { "$ref": "#/definitions/operation_object" }
+              }
+            ]
+          }
+        },
+        "breakpoint": { "type": "boolean" },
+        "hooks": { "type": "object" },
+        "semantic": { "type": "object" },
+        "full_state": { "type": "object" }
+      },
+      "required": ["operations"]
+    },
+    "operation_object": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string",
+          "enum": [
+            "updateStyle",
+            "moveElements",
+            "shiftElements",
+            "updateValues",
+            "updateNodeStyle",
+            "updateNodeProperties",
+            "updateEdgeStyle",
+            "updateEdgeProperties",
+            "addNode",
+            "removeNode",
+            "addEdge",
+            "removeEdge",
+            "updateTableCell",
+            "highlightTableCell",
+            "showDependency",
+            "appendToList",
+            "popFromList",
+            "updateBoundary",
+            "removeBoundary",
+            "drawTemp",
+            "removeTemp",
+            "addAuxView",
+            "removeAuxView",
+            "showComment",
+            "hideComment"
+          ]
+        },
+        "params": { "type": "object" }
+      },
+      "required": ["op", "params"]
+    },
+    "styles_object": {
+      "type": "object",
+      "properties": {
+        "elementStyles": { "type": "object" },
+        "variableStyles": { "type": "object" },
+        "animationStyles": { "type": "object" },
+        "tempStyles": { "type": "object" },
+        "commentStyles": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "playback_options": {
+      "type": "object",
+      "properties": {
+        "default_speed": { "type": "number" },
+        "speed_steps": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2
+        }
+      }
+    }
+  }
+}

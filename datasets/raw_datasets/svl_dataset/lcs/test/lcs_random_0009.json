@@ -1,0 +1,5169 @@
+{
+  "svl_version": "5.0",
+  "algorithm": {
+    "name": "Longest Common Subsequence (LCS)",
+    "family": "Dynamic Programming"
+  },
+  "initial_frame": {
+    "data_schema": {},
+    "data_state": {
+      "type": "array",
+      "structure": []
+    },
+    "auxiliary_views": [
+      {
+        "view_id": "input_strings",
+        "type": "list",
+        "title": "Input Strings",
+        "data": {
+          "String 1": [
+            "R",
+            "K",
+            "I",
+            "M",
+            "A",
+            "O",
+            "N",
+            "S"
+          ],
+          "String 2": [
+            "U",
+            "I",
+            "Z",
+            "I",
+            "T"
+          ]
+        }
+      },
+      {
+        "view_id": "dp_table",
+        "type": "table",
+        "title": "DP Table C[i,j]",
+        "data": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "options": {
+          "row_headers": [
+            "\u00f8",
+            "R",
+            "K",
+            "I",
+            "M",
+            "A",
+            "O",
+            "N",
+            "S"
+          ],
+          "col_headers": [
+            "\u00f8",
+            "U",
+            "I",
+            "Z",
+            "I",
+            "T"
+          ]
+        }
+      }
+    ],
+    "variables_schema": [
+      {
+        "name": "i",
+        "type": "pointer",
+        "description": "Pointer for str1"
+      },
+      {
+        "name": "j",
+        "type": "pointer",
+        "description": "Pointer for str2"
+      },
+      {
+        "name": "LCS",
+        "type": "value",
+        "description": "The final LCS string found"
+      }
+    ],
+    "pseudocode": [
+      "function LCS(str1, str2):",
+      "  m = len(str1), n = len(str2)",
+      "  dp = new table[m+1][n+1] initialized to 0",
+      "  for i from 1 to m:",
+      "    for j from 1 to n:",
+      "      if str1[i-1] == str2[j-1]:",
+      "        dp[i][j] = 1 + dp[i-1][j-1]",
+      "      else:",
+      "        dp[i][j] = max(dp[i-1][j], dp[i][j-1])",
+      "  // Backtrack from dp[m][n] to find the LCS string",
+      "  return LCS_string"
+    ],
+    "code_highlight": 1,
+    "styles": {
+      "elementStyles": {
+        "current_cell": {
+          "fill": "rgba(255, 255, 0, 0.5)",
+          "stroke": "#FFC107"
+        },
+        "dependency_cell": {
+          "fill": "rgba(0, 150, 136, 0.3)"
+        },
+        "updated_cell": {
+          "fill": "rgba(76, 175, 80, 0.5)"
+        },
+        "key_element": {
+          "fill": "#AED581",
+          "stroke": "#689F38"
+        }
+      },
+      "tempStyles": {
+        "dependency_arrow": {
+          "color": "#FF5722",
+          "strokeWidth": 1.5,
+          "arrowheadLength": 8
+        }
+      },
+      "animationStyles": {}
+    }
+  },
+  "deltas": [
+    {
+      "meta": {},
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 1,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 1,
+                "col": 2,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 1,
+                "col": 3,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 1,
+                "col": 4,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 0,
+                  "col": 5
+                }
+              ],
+              "to_cell": {
+                "row": 1,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 0,
+                  "col": 5
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 1,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 1,
+                "col": 5,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 1,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 2,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 2,
+                "col": 2,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 2,
+                "col": 3,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 2,
+                "col": 4,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 1,
+                  "col": 5
+                }
+              ],
+              "to_cell": {
+                "row": 2,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 1,
+                  "col": 5
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 2,
+                "col": 5,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 3,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 2
+      },
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 2
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 3,
+                "col": 2,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 3,
+                "col": 3,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 7,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 2,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 2,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 4
+      },
+      "code_highlight": 7,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 3,
+                "col": 4,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 3,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 3,
+                "col": 5,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 4,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 4,
+                "col": 2,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 4,
+                "col": 3,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 4,
+                "col": 4,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 3,
+                  "col": 5
+                }
+              ],
+              "to_cell": {
+                "row": 4,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 3,
+                  "col": 5
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 4,
+                "col": 5,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 5,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 5,
+                "col": 2,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 5,
+                "col": 3,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 5,
+                "col": 4,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 4,
+                  "col": 5
+                }
+              ],
+              "to_cell": {
+                "row": 5,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 4,
+                  "col": 5
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 5,
+                "col": 5,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 6,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 6,
+                "col": 2,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 6,
+                "col": 3,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 6,
+                "col": 4,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 5,
+                  "col": 5
+                }
+              ],
+              "to_cell": {
+                "row": 6,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 5,
+                  "col": 5
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 6,
+                "col": 5,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 6,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 7,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 7,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 6,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 7,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 7,
+                "col": 2,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 6,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 7,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 7,
+                "col": 3,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 6,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 7,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 7,
+                "col": 4,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 6,
+                  "col": 5
+                }
+              ],
+              "to_cell": {
+                "row": 7,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 6,
+                  "col": 5
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 7,
+                "col": 5,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8
+      },
+      "code_highlight": 4,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 1
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 1
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 1
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 7,
+                  "col": 1
+                }
+              ],
+              "to_cell": {
+                "row": 8,
+                "col": 1
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 7,
+                  "col": 1
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 1
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 8,
+                "col": 1,
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 1
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 2
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 2
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 2
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 7,
+                  "col": 2
+                }
+              ],
+              "to_cell": {
+                "row": 8,
+                "col": 2
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 7,
+                  "col": 2
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 2
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 8,
+                "col": 2,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 2
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 3
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 3
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 3
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 7,
+                  "col": 3
+                }
+              ],
+              "to_cell": {
+                "row": 8,
+                "col": 3
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 7,
+                  "col": 3
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 3
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 8,
+                "col": 3,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 3
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 4
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 4
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 4
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 7,
+                  "col": 4
+                }
+              ],
+              "to_cell": {
+                "row": 8,
+                "col": 4
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 7,
+                  "col": 4
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 4
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 8,
+                "col": 4,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 4
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 5
+      },
+      "code_highlight": 5,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 5
+              }
+            ],
+            "styleKey": "current_cell"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 5
+      },
+      "code_highlight": 6,
+      "operations": []
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        [
+          {
+            "op": "showDependency",
+            "params": {
+              "view_id": "dp_table",
+              "from_cells": [
+                {
+                  "row": 7,
+                  "col": 5
+                }
+              ],
+              "to_cell": {
+                "row": 8,
+                "col": 5
+              },
+              "styleKey": "dependency_arrow"
+            }
+          },
+          {
+            "op": "highlightTableCell",
+            "params": {
+              "view_id": "dp_table",
+              "cells": [
+                {
+                  "row": 7,
+                  "col": 5
+                }
+              ],
+              "styleKey": "dependency_cell"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 5
+      },
+      "code_highlight": 9,
+      "operations": [
+        {
+          "op": "updateTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "updates": [
+              {
+                "row": 8,
+                "col": 5,
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 5
+              }
+            ],
+            "styleKey": "updated_cell"
+          }
+        },
+        {
+          "op": "removeTemp",
+          "params": {
+            "type": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 5
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 5
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 5,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 4
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 8,
+                "col": 5
+              }
+            ],
+            "to_cell": {
+              "row": 8,
+              "col": 4
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 4,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 3
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 8,
+                "col": 4
+              }
+            ],
+            "to_cell": {
+              "row": 8,
+              "col": 3
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 3,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 8,
+                "col": 2
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 8,
+                "col": 3
+              }
+            ],
+            "to_cell": {
+              "row": 8,
+              "col": 2
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 8,
+        "j": 2,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 7,
+                "col": 2
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 8,
+                "col": 2
+              }
+            ],
+            "to_cell": {
+              "row": 7,
+              "col": 2
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 7,
+        "j": 2,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 6,
+                "col": 2
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 7,
+                "col": 2
+              }
+            ],
+            "to_cell": {
+              "row": 6,
+              "col": 2
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 6,
+        "j": 2,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 5,
+                "col": 2
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 6,
+                "col": 2
+              }
+            ],
+            "to_cell": {
+              "row": 5,
+              "col": 2
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 5,
+        "j": 2,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 4,
+                "col": 2
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 5,
+                "col": 2
+              }
+            ],
+            "to_cell": {
+              "row": 4,
+              "col": 2
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 4,
+        "j": 2,
+        "LCS": ""
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 3,
+                "col": 2
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 4,
+                "col": 2
+              }
+            ],
+            "to_cell": {
+              "row": 3,
+              "col": 2
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 3,
+        "j": 2,
+        "LCS": "I"
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 1
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 3,
+                "col": 2
+              }
+            ],
+            "to_cell": {
+              "row": 2,
+              "col": 1
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "i": 2,
+        "j": 1,
+        "LCS": "I"
+      },
+      "code_highlight": 10,
+      "operations": [
+        {
+          "op": "highlightTableCell",
+          "params": {
+            "view_id": "dp_table",
+            "cells": [
+              {
+                "row": 2,
+                "col": 0
+              }
+            ],
+            "styleKey": "key_element"
+          }
+        },
+        {
+          "op": "showDependency",
+          "params": {
+            "view_id": "dp_table",
+            "from_cells": [
+              {
+                "row": 2,
+                "col": 1
+              }
+            ],
+            "to_cell": {
+              "row": 2,
+              "col": 0
+            },
+            "styleKey": "dependency_arrow"
+          }
+        }
+      ]
+    },
+    {
+      "meta": {
+        "LCS": "I"
+      },
+      "code_highlight": 11,
+      "operations": []
+    }
+  ]
+}
