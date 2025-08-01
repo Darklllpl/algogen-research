@@ -33,8 +33,8 @@ if __name__ == "__main__":
         print(err)
         sys.exit(1)
     # Replace LLM call with requests
-    token = "sk-dMdaYSQFPlEMDhGK02AeD8C2Ec0d43EdBaD8Ce0435BcC623"
-    url = 'https://az.gptplus5.com/v1/chat/completions'
+    token = "sk-"
+    url = ''
     headers = {
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json'

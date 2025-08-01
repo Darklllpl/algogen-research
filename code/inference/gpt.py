@@ -6,8 +6,8 @@ import time
 import requests 
 
 
-API_ENDPOINT_URL = "http://10.24.116.10:13001/api/chat/completions"
-API_TOKEN = "sk-b62fa53dfb8e4678bb2cef24f9e2812c"
+API_ENDPOINT_URL = "YOUR_API_ENDPOINT_URL"
+API_TOKEN = "YOUR_API_TOKEN"
 
 MODEL_NAME = "gpt-4.1-2025-04-14"
 
@@ -242,7 +242,8 @@ def is_termination_delta(delta: dict, final_line_num: int) -> bool:
     return not ops and highlight is not None and highlight >= final_line_num
 
 def main():
-    if "YOUR_API_KEY" in API_TOKEN or "sk-b62fa53dfb8e4678bb2cef24f9e2812c" != API_TOKEN:
+    # 其余涉及API_TOKEN、API_ENDPOINT_URL的地方均已用占位符替换
+    if "YOUR_API_KEY" in API_TOKEN or "sk-" != API_TOKEN:
          print("Error: API Token is invalid or using example token. Please set your real API_TOKEN in the code.")
          return
 

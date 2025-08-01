@@ -27,8 +27,8 @@ import numpy as np
 # ============================
 
 # --- API ---
-API_BASE_URL = 'https://az.gptplus5.com/v1'
-API_TOKEN = "sk-dMdaYSQFPlEMDhGK02AeD8C2Ec0d43EdBaD8Ce0435BcC623"   
+API_BASE_URL = ''
+API_TOKEN = ""   
 DEFAULT_MODEL = "gpt-4.1-2025-04-14"
 
 # --- Data ---
